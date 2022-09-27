@@ -1,0 +1,63 @@
+[
+  {
+    "file": "game:blocktypes/machine/statictranslocator.json",
+    "side": "server",
+    "op": "replace",
+    "path": "/creativeinventory/general",
+    "value": [ "*-normal-north" ]
+  },
+  {
+    "file": "game:blocktypes/machine/statictranslocator.json",
+    "side": "server",
+    "op": "replace",
+    "path": "/resistance",
+    "value": 4
+  },
+  {
+    "file": "game:blocktypes/machine/statictranslocator.json",
+    "side": "server",
+    "op": "add",
+    "path": "/maxstacksize",
+    "value": 1
+  },
+  {
+    "file": "game:blocktypes/machine/statictranslocator.json",
+    "side": "server",
+    "op": "replace",
+    "path": "/drops",
+    "value": [
+      {
+        "type": "item",
+        "code": "translocatorengineeringredux:coalescencecrystalshard",
+        "quantity": {
+          "avg": 0,
+          "var": 0
+        }
+      },
+      {
+        "type": "item",
+        "code": "translocatorengineeringredux:gatearray",
+        "quantity": {
+          "avg": 0,
+          "var": 0
+        }
+      },
+      {
+        "type": "item",
+        "code": "translocatorengineeringredux:particulationcomponent",
+        "quantity": {
+          "avg": 0,
+          "var": 0
+        }
+      },
+      {
+        "type": "item",
+        "code": "translocatorengineeringredux:powercore",
+        "quantity": {
+          "avg": 0,
+          "var": 0
+        }
+      }
+    ]
+  }
+]

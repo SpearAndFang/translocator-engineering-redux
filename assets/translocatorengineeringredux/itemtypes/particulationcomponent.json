@@ -1,0 +1,10 @@
+{
+  "code": "particulationcomponent",
+  "texture": { "base": "item/particulationcomponent" },
+  "creativeinventory": {
+    "general": [ "*" ],
+    "items": [ "*" ],
+    "tengineering": [ "*" ]
+  },
+  "maxstacksize": 4
+}

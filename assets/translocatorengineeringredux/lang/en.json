@@ -1,0 +1,18 @@
+{
+  "translocatorengineeringredux:item-linker": "Translocator Linker",
+  "translocatorengineeringredux:item-coalescencecrystalshard": "Coalescence Crystal Shard",
+  "translocatorengineeringredux:item-crowbar": "Crowbar",
+  "translocatorengineeringredux:itemdesc-crowbar": "Hold left click on a Static Translocator to pry it apart.",
+  "translocatorengineeringredux:item-gatearray": "Gate Array",
+  "translocatorengineeringredux:item-particulationcomponent": "Particulation Component",
+  "translocatorengineeringredux:item-powercore": "Power Core",
+  "translocatorengineeringredux:item-rectifiedcoalescencecrystal": "Rectified Coalescence Crystal",
+  "heldhelp-linker-sync": "Synchronize",
+  "heldhelp-linker-clear": "Desynchronize",
+  "heldhelp-linker-link": "Link",
+  "translocatorengineeringredux:ingameerror-linker-cleared": "Synchronization cleared",
+  "translocatorengineeringredux:ingameerror-linker-out-of-range": "Out of range!",
+  "translocatorengineeringredux:ingameerror-linker-synced": "Synchronized to Translocator",
+  "translocatorengineeringredux:ingameerror-linker-linked": "Translocators Linked!",
+  "game:tabname-tengineering": "Translocator Engineering"
+}
