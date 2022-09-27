@@ -1,0 +1,9 @@
+{
+  "type": "code",
+  "modid": "translocatorengineeringredux",
+  "name": "Translocator Engineering Redux",
+  "authors": ["goxmeor"],
+  "description": "Enables deconstruction, construction, and linking of Static Translocators (ft. CaptainOats, SpearAndFang)",
+  "version": "1.2.0",
+  "dependencies": {}
+}
