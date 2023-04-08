@@ -1,0 +1,23 @@
+{
+	// Japanese localization file for 'Translocator Engineering Redux'.
+	// Mod Version: v1.4.0
+	// Translated By: Macoto Hino
+	// Machine translation using PCOT and DeepL.
+
+  "translocatorengineeringredux:item-linker": "トランスロケーター・リンカー",
+  "translocatorengineeringredux:item-coalescencecrystalshard": "連結クリスタル・シャード",
+  "translocatorengineeringredux:item-crowbar": "バール",
+  "translocatorengineeringredux:itemdesc-crowbar": "スタティック・トランスロケーターを左クリックし続けて、分解する。",
+  "translocatorengineeringredux:item-gatearray": "ゲートアレイ",
+  "translocatorengineeringredux:item-particulationcomponent": "粒子化コンポーネント",
+  "translocatorengineeringredux:item-powercore": "パワーコア",
+  "translocatorengineeringredux:item-rectifiedcoalescencecrystal": "修理した連結クリスタル",
+  "heldhelp-linker-sync": "同期",
+  "heldhelp-linker-clear": "非同期",
+  "heldhelp-linker-link": "接続",
+  "translocatorengineeringredux:ingameerror-linker-cleared": "同期完了",
+  "translocatorengineeringredux:ingameerror-linker-out-of-range": "範囲外！",
+  "translocatorengineeringredux:ingameerror-linker-synced": "トランスロケーターと同期している",
+  "translocatorengineeringredux:ingameerror-linker-linked": "トランスロケーターは接続されている！",
+  "game:tabname-tengineering": "Translocator Engineering"
+}

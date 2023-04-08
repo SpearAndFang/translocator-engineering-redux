@@ -1,0 +1,18 @@
+{
+  "translocatorengineeringredux:item-linker": "Enlazador de Translocador",
+  "translocatorengineeringredux:item-coalescencecrystalshard": "Fragmentos de cristal de Coalescencia",
+  "translocatorengineeringredux:item-crowbar": "Palanca",
+  "translocatorengineeringredux:itemdesc-crowbar": "Mantén pulsado el botón izquierdo sobre un Translocador Estático para apartarlo.",
+  "translocatorengineeringredux:item-gatearray": "Matriz de puerta",
+  "translocatorengineeringredux:item-particulationcomponent": "Componente de Particulación",
+  "translocatorengineeringredux:item-powercore": "Núcleo de energía",
+  "translocatorengineeringredux:item-rectifiedcoalescencecrystal": "Cristal de coalescencia Rectificado",
+  "heldhelp-linker-sync": "Sincronizar",
+  "heldhelp-linker-clear": "Desincronizar",
+  "heldhelp-linker-link": "Enlace",
+  "translocatorengineeringredux:ingameerror-linker-cleared": "Sincronización borrada",
+  "translocatorengineeringredux:ingameerror-linker-out-of-range": "¡Fuera de alcance!",
+  "translocatorengineeringredux:ingameerror-linker-synced": "Sincronizado al Translocador",
+  "translocatorengineeringredux:ingameerror-linker-linked": "Translocadores enlazados!",
+  "game:tabname-tengineering": "Ingeniería de Translocadores"
+}

@@ -1,0 +1,18 @@
+{
+  "translocatorengineeringredux:item-linker": "Translokator-Verbinder",
+  "translocatorengineeringredux:item-coalescencecrystalshard": "Koaleszenz Kristallscherbe",
+  "translocatorengineeringredux:item-crowbar": "Brecheisen",
+  "translocatorengineeringredux:itemdesc-crowbar": "Halte die linke Maustaste auf einen Statischen Translokator gedrückt, um ihn auseinander zu bauen.",
+  "translocatorengineeringredux:item-gatearray": "Tor Datenfeld",
+  "translocatorengineeringredux:item-particulationcomponent": "Partikulationskomponente",
+  "translocatorengineeringredux:item-powercore": "Energiekern",
+  "translocatorengineeringredux:item-rectifiedcoalescencecrystal": "Reparierter Koaleszenz Kristall",
+  "heldhelp-linker-sync": "Synchronisieren",
+  "heldhelp-linker-clear": "Desynchronisieren",
+  "heldhelp-linker-link": "Verbinden",
+  "translocatorengineeringredux:ingameerror-linker-cleared": "Synchronisierung gelöscht",
+  "translocatorengineeringredux:ingameerror-linker-out-of-range": "Außer Reichweite!",
+  "translocatorengineeringredux:ingameerror-linker-synced": "Mit Translokator synchronisiert",
+  "translocatorengineeringredux:ingameerror-linker-linked": "Translokatoren verbindet!",
+  "game:tabname-tengineering": "Translokatoren Technik"
+}

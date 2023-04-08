@@ -1,0 +1,18 @@
+{
+  "translocatorengineeringredux:item-linker": "Connettore Tanslocatore",
+  "translocatorengineeringredux:item-coalescencecrystalshard": "Frammento di Cristallo di Coalescenza",
+  "translocatorengineeringredux:item-crowbar": "Piede di Porco",
+  "translocatorengineeringredux:itemdesc-crowbar": "Mantieni click sinistro su un Translocatore Statico per separarlo.",
+  "translocatorengineeringredux:item-gatearray": "Portale Matrice",
+  "translocatorengineeringredux:item-particulationcomponent": "Componente Particolato",
+  "translocatorengineeringredux:item-powercore": "Nucleo Energetico",
+  "translocatorengineeringredux:item-rectifiedcoalescencecrystal": "Cristallo di Coalescenza Rettificato",
+  "heldhelp-linker-sync": "Sincronizza",
+  "heldhelp-linker-clear": "Desincronizza",
+  "heldhelp-linker-link": "Collega",
+  "translocatorengineeringredux:ingameerror-linker-cleared": "Sincronizzazione Cancellata",
+  "translocatorengineeringredux:ingameerror-linker-out-of-range": "Fuori portata!",
+  "translocatorengineeringredux:ingameerror-linker-synced": "Sincronizzato al Translocatore",
+  "translocatorengineeringredux:ingameerror-linker-linked": "Translocatori Collegati!",
+  "game:tabname-tengineering": "Ingegneria del translocatore"
+}

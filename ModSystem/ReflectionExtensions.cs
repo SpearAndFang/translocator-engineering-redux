@@ -13,6 +13,11 @@ namespace TranslocatorEngineering.ModSystem
         {
             var bindingFlags = BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.GetField;
             var field = type.GetField(name, bindingFlags);
+            if (field == null) //added null check 1.18
+            {
+                bindingFlags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.GetField;
+                field = type.GetField(name, bindingFlags);
+            }
             return (T)field.GetValue(obj);
         }
         public static void XXX_SetFieldValue<T>(this object obj, string name, T value)
@@ -23,7 +28,12 @@ namespace TranslocatorEngineering.ModSystem
         {
             var bindingFlags = BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetField;
             var field = type.GetField(name, bindingFlags);
-            field.SetValue(obj, value);
+            if (field == null) //1.18
+            {
+                bindingFlags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.SetField;
+                field = type.GetField(name, bindingFlags);
+            }
+            field?.SetValue(obj, value); //added null check 1.18
         }
         // e.g. .XXX_GetMethod("foo", new Type[] { typeof(int), typeof(byte[]) }) // finds `void foo(inf, byte[])`
         public static MethodInfo XXX_GetMethod(this object obj, string name, Type[] parameterTypes = null)

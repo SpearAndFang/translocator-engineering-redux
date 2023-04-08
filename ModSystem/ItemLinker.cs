@@ -230,6 +230,9 @@ namespace TranslocatorEngineering.ModSystem
                 upFace.Texture = newTexture;
             }
         }
+
+        //REMOVED THIS SO THAT IF SOME OTHER MOD CRASHES THE GAME, THE CLIENT-CRASH DOESN"T END UP REPORTING THIS AS THE ISSUE 
+        /*
         public override void OnUnloaded(ICoreAPI api)
         {
             if (api.Side == EnumAppSide.Client)
@@ -241,6 +244,7 @@ namespace TranslocatorEngineering.ModSystem
                 }
             }
         }
+        */
         #endregion
     }
 }

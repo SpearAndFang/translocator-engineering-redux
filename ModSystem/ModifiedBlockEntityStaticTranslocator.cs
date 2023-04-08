@@ -23,7 +23,7 @@ namespace TranslocatorEngineering.ModSystem
         // easy access to base class's privates
         private static readonly Type BaseType = typeof(BlockEntityStaticTranslocator);
         public bool CanTeleport { get => this.XXX_GetFieldValue<bool>(BaseType, "canTeleport"); set => this.XXX_SetFieldValue(BaseType, "canTeleport", value); }
-        public int RepairState { get => this.XXX_GetFieldValue<int>(BaseType, "repairState"); set => this.XXX_SetFieldValue(BaseType, "repairState", value); }
+        public int RepairState { get => this.XXX_GetFieldValue<int>(BaseType, "repairState"); set => this.XXX_SetFieldValue(BaseType, "repairState", value); } 
         public bool FindNextChunk { get => this.XXX_GetFieldValue<bool>(BaseType, "findNextChunk"); set => this.XXX_SetFieldValue(BaseType, "findNextChunk", value); }
 
         // extra properties
