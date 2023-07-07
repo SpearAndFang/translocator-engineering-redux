@@ -22,7 +22,7 @@ namespace TranslocatorEngineering.ModSystem
 
     public class TranslocatorEngineeringMod : ModSystem
     {
-        private ModConfig config;
+        public ModConfig config;
         private static bool alreadyPatched = false;
         private ICoreAPI api;
         public override void Start(ICoreAPI api)

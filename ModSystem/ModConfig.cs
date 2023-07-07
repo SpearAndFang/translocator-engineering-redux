@@ -3,8 +3,8 @@ namespace TranslocatorEngineering.ModSystem
     using Vintagestory.API.Common;
     public class ModConfig
     {
-
-        public bool TODO = true;
+        
+        public int MaximumLinkRange = 8000;
 
         // static helper methods
         public static string filename = "TranslocatorEngineeringMod.json";
