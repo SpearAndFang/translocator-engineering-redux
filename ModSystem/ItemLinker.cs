@@ -14,7 +14,21 @@ namespace TranslocatorEngineering.ModSystem
 
     public class ItemLinker : Item
     {
-        private static readonly int MAX_DISTANCE = 8000;
+        //private static readonly int MAX_DISTANCE = 8000;
+        private int? _maxDistance;
+        private int MaxDistance
+        {
+            get
+            {
+                if (!this._maxDistance.HasValue)
+                {
+                    this._maxDistance = this.api.ModLoader.GetModSystem<TranslocatorEngineeringMod>().config.MaximumLinkRange;
+                }
+
+                return this._maxDistance.Value;
+            }
+        }
+
         private BlockPos GetStoredSrcPos(ItemStack itemStack)
         {
             if (!itemStack.Attributes.HasAttribute("srcPos"))
@@ -90,7 +104,8 @@ namespace TranslocatorEngineering.ModSystem
             {
                 // check distance
                 var distance = byEntity.Pos.AsBlockPos.DistanceTo(storedSrcPos);
-                if (distance > MAX_DISTANCE)
+                //if (distance > MAX_DISTANCE)
+                if (distance > this.MaxDistance)
                 {
                     capi?.TriggerIngameError(null, null, Lang.Get("translocatorengineeringredux:ingameerror-linker-out-of-range"));
                 }
@@ -164,7 +179,8 @@ namespace TranslocatorEngineering.ModSystem
             else
             {
                 var distance = capi.World.Player.Entity.Pos.AsBlockPos.DistanceTo(storedSrcPos);
-                var lights = (int)GameMath.Clamp(Math.Ceiling(8 - (8 * distance / MAX_DISTANCE)), 0, 8);
+                //var lights = (int)GameMath.Clamp(Math.Ceiling(8 - (8 * distance / MAX_DISTANCE)), 0, 8);
+                var lights = (int)GameMath.Clamp(Math.Ceiling(8 - (8 * distance / this.MaxDistance)), 0, 8);
                 if (lights == 0)
                 {
                     renderinfo.ModelRef = this.meshrefs[capi.World.Rand.NextDouble() < 0.25 ? 1 : 0];

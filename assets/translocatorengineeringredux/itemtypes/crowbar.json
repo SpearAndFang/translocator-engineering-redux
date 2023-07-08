@@ -2,14 +2,77 @@
   "code": "crowbar",
   "class": "ItemCrowbar",
   "maxstacksize": 1,
-
+  "attributes": {
+    "toolrackTransform": {
+      "translation": {
+        "x": -0.3,
+        "y": 0,
+        "z": 0
+      },
+      "rotation": {
+        "x": 90,
+        "y": -81,
+        "z": 90
+      },
+      "origin": {
+        "x": 0.7,
+        "y": -1.5,
+        "z": 0.7
+      },
+      "scale": 1.25
+    },
+    "groundStorageTransform": {
+      "translation": {
+        "x": 0,
+        "y": -0.03,
+        "z": 0.3
+      },
+      "rotation": {
+        "x": 109,
+        "y": -3,
+        "z": -4
+      },
+      "origin": {
+        "x": 0.44,
+        "y": 0.3,
+        "z": 0.69
+      },
+      "scale": 1.13
+    }
+  },
+  "behaviors": [
+    {
+      "name": "GroundStorable",
+      "properties": {
+        "layout": "WallHalves",
+        "wallOffY": 1,
+        "sprintKey": true,
+        "selectionBox": {
+          "x1": 0,
+          "y1": 0,
+          "z1": 0,
+          "x2": 1,
+          "y2": 0.1,
+          "z2": 1
+        },
+        "collisionBox": {
+          "x1": 0,
+          "y1": 0,
+          "z1": 0,
+          "x2": 0,
+          "y2": 0,
+          "z2": 0
+        }
+      }
+    }
+  ],
   "creativeinventory": {
     "general": [ "*" ],
     "items": [ "*" ],
     "tools": [ "*" ],
     "tengineering": [ "*" ]
   },
-
+  "tool": "Shovel",
   "shape": {
     "base": "item/steelcrowbar"
   },

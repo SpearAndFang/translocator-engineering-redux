@@ -4,7 +4,8 @@ namespace TranslocatorEngineering.ModSystem
     public class ModConfig
     {
 
-        public bool TODO = true;
+        //public bool TODO = true;
+        public int MaximumLinkRange = 8000;
 
         // static helper methods
         public static string filename = "TranslocatorEngineeringMod.json";
