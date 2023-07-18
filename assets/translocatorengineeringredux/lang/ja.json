@@ -1,8 +1,8 @@
 {
-	// Japanese localization file for 'Translocator Engineering Redux'.
-	// Mod Version: v1.4.0
-	// Translated By: Macoto Hino
-	// Machine translation using PCOT and DeepL.
+  "comment_description": "Japanese localization file for 'Translocator Engineering Redux'.",
+  "comment_version": "Mod Version: v1.4.4",
+  "comment_author": "Translated By: Macoto Hino",
+  "comment_technical_details": "Machine translation using PCOT and DeepL.",
 
   "translocatorengineeringredux:item-linker": "トランスロケーター・リンカー",
   "translocatorengineeringredux:item-coalescencecrystalshard": "連結クリスタル・シャード",

@@ -31,7 +31,7 @@ namespace TranslocatorEngineering.ModSystem
             this.api = api;
             api.Logger.Debug("[TranslocatorEngineering] Start");
             base.Start(api);
-
+			api.World.Logger.Event("started 'Translocator Engineering' mod");
             this.config = ModConfig.Load(api);
 
             // force register StaticTranslocator, overwriting registration from SurvivalCoreSystem, so that existing Block(Entities?) use our new code without remapping
