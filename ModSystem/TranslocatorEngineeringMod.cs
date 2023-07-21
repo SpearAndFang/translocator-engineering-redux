@@ -18,21 +18,40 @@ namespace TranslocatorEngineering.ModSystem
     using System.Reflection;
     using Vintagestory.API.MathTools;
     using Vintagestory.API.Util;
+    using TranslocatorEngineering.ModConfig;
 
 
     public class TranslocatorEngineeringMod : ModSystem
     {
-        //private ModConfig config;
-        public ModConfig config;
         private static bool alreadyPatched = false;
         private ICoreAPI api;
+
+        public override void StartPre(ICoreAPI api)
+        {
+            var cfgFileName = "TranslocatorEngineeringMod.json";
+            try
+            {
+                ModConfig fromDisk;
+                if ((fromDisk = api.LoadModConfig<ModConfig>(cfgFileName)) == null)
+                { api.StoreModConfig(ModConfig.Loaded, cfgFileName); }
+                else
+                { ModConfig.Loaded = fromDisk; }
+            }
+            catch
+            { api.StoreModConfig(ModConfig.Loaded, cfgFileName); }
+            base.StartPre(api);
+        }
+
+
         public override void Start(ICoreAPI api)
         {
             this.api = api;
             api.Logger.Debug("[TranslocatorEngineering] Start");
             base.Start(api);
-			api.World.Logger.Event("started 'Translocator Engineering' mod");
-            this.config = ModConfig.Load(api);
+            api.World.Logger.Event("started 'Translocator Engineering' mod");
+
+            //MOVED TO PRE TO HOPEFULLY ADDRESS A INTERMITTENT CONFIG ISSUE
+            //this.config = ModConfig.Load(api);
 
             // force register StaticTranslocator, overwriting registration from SurvivalCoreSystem, so that existing Block(Entities?) use our new code without remapping
             ForceRegisterBlockEntityType(api, "StaticTranslocator", typeof(ModifiedBlockEntityStaticTranslocator));
@@ -64,7 +83,8 @@ namespace TranslocatorEngineering.ModSystem
         public override void StartServerSide(ICoreServerAPI sapi)
         {
             // persist queuedTranslocatorDestinationAssignments in world save
-            sapi.Event.SaveGameLoaded += () => {
+            sapi.Event.SaveGameLoaded += () =>
+            {
                 var data = sapi.WorldManager.SaveGame.GetData("queuedTranslocatorDestinationAssignments");
                 if (data != null)
                 {

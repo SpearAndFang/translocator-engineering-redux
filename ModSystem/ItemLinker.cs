@@ -10,24 +10,14 @@ namespace TranslocatorEngineering.ModSystem
     using Vintagestory.API.MathTools;
     //using Vintagestory.API.Server;
     using Vintagestory.API.Util;
+    using TranslocatorEngineering.ModConfig;
 
 
     public class ItemLinker : Item
     {
         //private static readonly int MAX_DISTANCE = 8000;
-        private int? _maxDistance;
-        private int MaxDistance
-        {
-            get
-            {
-                if (!this._maxDistance.HasValue)
-                {
-                    this._maxDistance = this.api.ModLoader.GetModSystem<TranslocatorEngineeringMod>().config.MaximumLinkRange;
-                }
+        private readonly int MaxDistance = ModConfig.Loaded.MaximumLinkRange;
 
-                return this._maxDistance.Value;
-            }
-        }
 
         private BlockPos GetStoredSrcPos(ItemStack itemStack)
         {

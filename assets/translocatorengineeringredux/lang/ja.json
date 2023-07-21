@@ -1,13 +1,13 @@
 {
   "comment_description": "Japanese localization file for 'Translocator Engineering Redux'.",
-  "comment_version": "Mod Version: v1.4.4",
+  "comment_version": "Mod Version: v1.4.5",
   "comment_author": "Translated By: Macoto Hino",
   "comment_technical_details": "Machine translation using PCOT and DeepL.",
 
   "translocatorengineeringredux:item-linker": "トランスロケーター・リンカー",
   "translocatorengineeringredux:item-coalescencecrystalshard": "連結クリスタル・シャード",
   "translocatorengineeringredux:item-crowbar": "バール",
-  "translocatorengineeringredux:itemdesc-crowbar": "スタティック・トランスロケーターを左クリックし続けて、分解する。",
+  "translocatorengineeringredux:itemdesc-crowbar": "スタティック・トランスロケーターを左クリックし続けて、分解するのに使う。",
   "translocatorengineeringredux:item-gatearray": "ゲートアレイ",
   "translocatorengineeringredux:item-particulationcomponent": "粒子化コンポーネント",
   "translocatorengineeringredux:item-powercore": "パワーコア",
@@ -19,5 +19,8 @@
   "translocatorengineeringredux:ingameerror-linker-out-of-range": "範囲外！",
   "translocatorengineeringredux:ingameerror-linker-synced": "トランスロケーターと同期している",
   "translocatorengineeringredux:ingameerror-linker-linked": "トランスロケーターは接続されている！",
-  "game:tabname-tengineering": "Translocator Engineering"
+  "game:tabname-tengineering": "Translocator Engineering",
+
+  "game:te-quickstart-title": "Translocator Engineering: クイックスタートガイド",
+  "game:te-quickstart-text": "<strong>Translocator Engineering: クイックスタートガイド</strong><br><i>破壊と創造、そして接続。</i><br><br>このMODの更新版と追加ドキュメントは<a href=\"https://mods.vintagestory.at/translocatorengineeringredux\">こちら</a>でご覧頂けます。<br><br><strong>始めに</strong><br>このMODでは、バニラの<a href=\"handbook://block-statictranslocator-normal-north\">スタティック・トランスロケーター</a>を分解し、再構築、再配置、接続することが出来ます。また、既存の修理されたスタティック・トランスロケーターを再接続することも出来ます。<br><br><strong>トランスロケーター・リンカー</strong><br><a href=\"handbook://item-translocatorengineeringredux:linker\">トランスロケーター・リンカー</a>は、2つのトランスロケーターを接続する為に使用します。作製したトランスロケーターはすぐに接続出来ます。見付けたトランスロケーターは、接続する前に修理する必要があります。<br><br>リンカーなしで新しくトランスロケーターを作って配置しても、どこにも移動しないので意味がありません。廃墟と化した建造物にあるトランスロケーターだけが、最初から他のトランスロケーターと接続されています。<br><br>リンカーのクラフトレシピには<a href=\"handbook://item-translocatorengineeringredux:gatearray\">ゲートアレイ</a>が含まれている為（ハンドブックを参照）、クラフトするには少なくとも1台のトランスロケーターが犠牲にする必要があります。<br><br>リンカーを使うには、トランスロケーター上で右クリックし、次に2つ目のトランスロケーターに右クリックします。両方のトランスロケーターが接続されます。どちらかのトランスロケーターが以前に別のトランスロケーターに接続されていた場合、その別のトランスロケーターは接続が解除されます。接続されていないトランスロケーターはまだ修理出来ますが、使用する前に接続する必要があります。すべての転移は双方向であり、一方通行のトランスロケーターは存在しません。<br><br>リンカーで2台のトランスロケーター間を接続出来る最大距離は8000ブロックです。リンカーの前面にあるライトは、大まかな距離の目安になります。リンカーを最初に同期させたトランスロケーターから遠ざかるにつれて、ライトは消え始めます（1000ブロックごとに1つのライトが消えます）。8000ブロック以上離れたトランスロケーターに同期しているリンカーを持っている場合、すべてのライトが消え、パネルが点滅し、圏外であることを示します。<br><br>リンカーをトランスロケーターに同期させた後、スニーク(shift)を押しながら右クリックすると、リンカーをリセット出来ます。<br><br><strong>バール</strong><br>バールは、鋼のインゴット1個を使って金床で鍛造することが出来ます。十分な強度のある鋼のみでしかバールは作る事は出来ません。バールを手にした状態で左クリックを押し続けると、スタティック・トランスロケーターを分解出来ます。<br><br><strong>その他</strong><br>スタティック・トランスロケーターを分解すると、5～6個の<a href=\"handbook://item-translocatorengineeringredux:coalescencecrystalshard\">連結クリスタル・シャード</a>が回収出来ますが、新しいトランスロケーターを作るには、完全に<a href=\"handbook://item-translocatorengineeringredux:rectifiedcoalescencecrystal\">修理した連結クリスタル</a>が6個必要です。<br><br>"
 }
