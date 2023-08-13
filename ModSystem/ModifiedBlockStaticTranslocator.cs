@@ -7,9 +7,13 @@ namespace TranslocatorEngineering.ModSystem
     using Vintagestory.API.MathTools;
     //using Vintagestory.API.Util;
     using Vintagestory.GameContent;
+    using TranslocatorEngineering.ModConfig;
 
     public class ModifiedBlockStaticTranslocator : BlockStaticTranslocator
     {
+        private readonly double RecoveryChanceGateArray = ModConfig.Loaded.RecoveryChanceGateArray;
+        private readonly double RecoveryChanceParticulationComponent = ModConfig.Loaded.RecoveryChanceParticulationComponent;
+
         public override float OnGettingBroken(IPlayer player, BlockSelection blockSel, ItemSlot itemslot, float remainingResistance, float dt, int counter)
         {
             if (itemslot.Itemstack?.Item?.Code.Path == "crowbar")
@@ -36,7 +40,9 @@ namespace TranslocatorEngineering.ModSystem
             var metalPartsQty = this.api.World.Rand.Next(2, 4);
             list.Add(new ItemStack(this.api.World.GetBlock(new AssetLocation("game:metal-parts")), metalPartsQty));
             scrapDropQty += 4 - metalPartsQty;
-            if (this.api.World.Rand.NextDouble() < 0.8)
+
+            //if (this.api.World.Rand.NextDouble() < 0.8)
+            if (this.api.World.Rand.NextDouble() < this.RecoveryChanceGateArray)
             {
                 list.Add(new ItemStack(this.api.World.GetItem(new AssetLocation("translocatorengineeringredux:gatearray")), 1));
             }
@@ -44,7 +50,8 @@ namespace TranslocatorEngineering.ModSystem
             {
                 scrapDropQty += 1;
             }
-            if (this.api.World.Rand.NextDouble() < 0.8)
+            //if (this.api.World.Rand.NextDouble() < 0.8)
+            if (this.api.World.Rand.NextDouble() < this.RecoveryChanceParticulationComponent)
             {
                 list.Add(new ItemStack(this.api.World.GetItem(new AssetLocation("translocatorengineeringredux:particulationcomponent")), 1));
             }

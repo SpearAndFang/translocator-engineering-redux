@@ -4,6 +4,6 @@
   "name": "Translocator Engineering Redux",
   "authors": [ "goxmeor" ],
   "description": "Enables deconstruction, construction, and linking of Static Translocators (ft. CaptainOats, SpearAndFang, Macoto Hino)",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "dependencies": {}
 }
