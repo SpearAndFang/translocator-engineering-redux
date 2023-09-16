@@ -16,7 +16,7 @@ namespace TranslocatorEngineering.ModSystem
     public class ItemLinker : Item
     {
         //private static readonly int MAX_DISTANCE = 8000;
-        private readonly int MaxDistance = ModConfig.Loaded.MaximumLinkRange;
+        private int MaxDistance => ModConfig.Loaded.MaximumLinkRange;
 
 
         private BlockPos GetStoredSrcPos(ItemStack itemStack)

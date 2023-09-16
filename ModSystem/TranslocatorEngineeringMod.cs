@@ -8,6 +8,7 @@ namespace TranslocatorEngineering.ModSystem
     using HarmonyLib;
     //using Vintagestory.API.Client;
     using Vintagestory.API.Common;
+    using Vintagestory.API.Client;
     using Vintagestory.API.Server;
     //using Vintagestory.API.Config;
     //using System.Linq;
@@ -24,6 +25,7 @@ namespace TranslocatorEngineering.ModSystem
     public class TranslocatorEngineeringMod : ModSystem
     {
         private static bool alreadyPatched = false;
+        private IServerNetworkChannel serverChannel;
         private ICoreAPI api;
 
         public override void StartPre(ICoreAPI api)
@@ -80,6 +82,16 @@ namespace TranslocatorEngineering.ModSystem
             }
         }
         private Dictionary<BlockPos, QueuedAssignment> queuedTranslocatorDestinationAssignments = new Dictionary<BlockPos, QueuedAssignment>(); // for attenuating translocators in unloaded chunks
+
+        public override void StartClientSide(ICoreClientAPI capi) {
+            capi.Network.RegisterChannel("translocatorengineeringredux")
+                .RegisterMessageType<SyncClientPacket>()
+                .SetMessageHandler<SyncClientPacket>(packet => { 
+                    Mod.Logger.Event($"Received maximum link range of {packet.MaximumLinkRange} from server"); 
+                    ModConfig.Loaded.MaximumLinkRange = packet.MaximumLinkRange; 
+                });
+        }
+
         public override void StartServerSide(ICoreServerAPI sapi)
         {
             // persist queuedTranslocatorDestinationAssignments in world save
@@ -97,7 +109,29 @@ namespace TranslocatorEngineering.ModSystem
                 }
             };
             sapi.Event.GameWorldSave += () => sapi.WorldManager.SaveGame.StoreData("queuedTranslocatorDestinationAssignments", SerializerUtil.Serialize(this.queuedTranslocatorDestinationAssignments));
+            
+            // we need to send connecting players the config settings
+            sapi.Event.PlayerJoin += OnPlayerJoin; // add method so we can remove it in dispose to prevent memory leaks
+            // register network channel to send data to clients
+            serverChannel = sapi.Network.RegisterChannel("translocatorengineeringredux")
+                .RegisterMessageType<SyncClientPacket>()
+                .SetMessageHandler<SyncClientPacket>((player, packet) => { /* do nothing. idk why this handler is even needed, but it is */ });
         }
+        
+        private void OnPlayerJoin(IServerPlayer player) {
+            // send the connecting player the settings it needs to be synced
+            serverChannel.SendPacket(new SyncClientPacket {
+                MaximumLinkRange = ModConfig.Loaded.MaximumLinkRange
+            }, player);
+        }
+
+        public override void Dispose() {
+            // remove our player join listener so we dont create memory leaks
+            if (api is ICoreServerAPI sapi) {
+                sapi.Event.PlayerJoin -= OnPlayerJoin;
+            }
+        }
+        
         public void SetDestinationOrQueue(BlockPos srcPos, BlockPos dstPos)
         {
             this.SetDestinationOrQueue(srcPos, dstPos, this.api.World.Calendar.TotalDays);
