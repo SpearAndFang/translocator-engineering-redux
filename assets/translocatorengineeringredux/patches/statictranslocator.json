@@ -9,6 +9,13 @@
   {
     "file": "game:blocktypes/machine/statictranslocator.json",
     "side": "server",
+    "op": "add",
+    "path": "/creativeinventory/tengineering",
+    "value": [ "*-normal-north" ]
+  },
+  {
+    "file": "game:blocktypes/machine/statictranslocator.json",
+    "side": "server",
     "op": "replace",
     "path": "/resistance",
     "value": 4

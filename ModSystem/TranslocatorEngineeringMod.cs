@@ -6,14 +6,10 @@ namespace TranslocatorEngineering.ModSystem
     using ProtoBuf;
     using System;
     using HarmonyLib;
-    //using Vintagestory.API.Client;
+    using Vintagestory.API.Client;
     using Vintagestory.API.Common;
     using Vintagestory.API.Server;
-    //using Vintagestory.API.Config;
-    //using System.Linq;
     using System.Collections.Generic;
-    //using Vintagestory.Server;
-    //using Vintagestory.Client.NoObf;
     using Vintagestory.Common;
     using System.Reflection;
     using Vintagestory.API.MathTools;
@@ -24,6 +20,7 @@ namespace TranslocatorEngineering.ModSystem
     public class TranslocatorEngineeringMod : ModSystem
     {
         private static bool alreadyPatched = false;
+        private IServerNetworkChannel serverChannel;  //BillyGalbreath 1.4.7
         private ICoreAPI api;
 
         public override void StartPre(ICoreAPI api)
@@ -50,7 +47,6 @@ namespace TranslocatorEngineering.ModSystem
             base.Start(api);
             api.World.Logger.Event("started 'Translocator Engineering' mod");
 
-            //MOVED TO PRE TO HOPEFULLY ADDRESS A INTERMITTENT CONFIG ISSUE
             //this.config = ModConfig.Load(api);
 
             // force register StaticTranslocator, overwriting registration from SurvivalCoreSystem, so that existing Block(Entities?) use our new code without remapping
@@ -80,6 +76,20 @@ namespace TranslocatorEngineering.ModSystem
             }
         }
         private Dictionary<BlockPos, QueuedAssignment> queuedTranslocatorDestinationAssignments = new Dictionary<BlockPos, QueuedAssignment>(); // for attenuating translocators in unloaded chunks
+
+        //BillyGalbreath 1.4.7
+        public override void StartClientSide(ICoreClientAPI capi)
+        {
+            capi.Network.RegisterChannel("translocatorengineeringredux")
+                .RegisterMessageType<SyncClientPacket>()
+                .SetMessageHandler<SyncClientPacket>(packet =>
+                {
+                    this.Mod.Logger.Event($"Received maximum link range of {packet.MaximumLinkRange} from server");
+                    ModConfig.Loaded.MaximumLinkRange = packet.MaximumLinkRange;
+                });
+        }
+        //End BillyGalbreath 1.4.7
+
         public override void StartServerSide(ICoreServerAPI sapi)
         {
             // persist queuedTranslocatorDestinationAssignments in world save
@@ -97,11 +107,44 @@ namespace TranslocatorEngineering.ModSystem
                 }
             };
             sapi.Event.GameWorldSave += () => sapi.WorldManager.SaveGame.StoreData("queuedTranslocatorDestinationAssignments", SerializerUtil.Serialize(this.queuedTranslocatorDestinationAssignments));
+
+            //BillyGalbreath 1.4.7
+            // we need to send connecting players the config settings
+            sapi.Event.PlayerJoin += this.OnPlayerJoin; // add method so we can remove it in dispose to prevent memory leaks
+            // register network channel to send data to clients
+            this.serverChannel = sapi.Network.RegisterChannel("translocatorengineeringredux")
+                .RegisterMessageType<SyncClientPacket>()
+                .SetMessageHandler<SyncClientPacket>((player, packet) => { /* do nothing. idk why this handler is even needed, but it is */ });
+            //End BillyGalbreath 1.4.7
+
         }
+
+
+        //BillyGalbreath 1.4.7
+        private void OnPlayerJoin(IServerPlayer player)
+        {
+            // send the connecting player the settings it needs to be synced
+            this.serverChannel.SendPacket(new SyncClientPacket
+            {
+                MaximumLinkRange = ModConfig.Loaded.MaximumLinkRange
+            }, player);
+        }
+
+        public override void Dispose()
+        {
+            // remove our player join listener so we dont create memory leaks
+            if (this.api is ICoreServerAPI sapi)
+            {
+                sapi.Event.PlayerJoin -= this.OnPlayerJoin;
+            }
+        }
+        //End BillyGalbreath 1.4.7
+
         public void SetDestinationOrQueue(BlockPos srcPos, BlockPos dstPos)
         {
             this.SetDestinationOrQueue(srcPos, dstPos, this.api.World.Calendar.TotalDays);
         }
+
         public void SetDestinationOrQueue(BlockPos srcPos, BlockPos dstPos, double timestamp)
         {
             var chunk = this.api.World.BlockAccessor.GetChunkAtBlockPos(srcPos);

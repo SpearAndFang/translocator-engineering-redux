@@ -13,6 +13,7 @@ namespace TranslocatorEngineering.ModSystem
     {
         private readonly double RecoveryChanceGateArray = ModConfig.Loaded.RecoveryChanceGateArray;
         private readonly double RecoveryChanceParticulationComponent = ModConfig.Loaded.RecoveryChanceParticulationComponent;
+        private readonly bool AlwaysDropAllCrystalShards = ModConfig.Loaded.AlwaysDropAllCrystalShards;
 
         public override float OnGettingBroken(IPlayer player, BlockSelection blockSel, ItemSlot itemslot, float remainingResistance, float dt, int counter)
         {
@@ -36,7 +37,14 @@ namespace TranslocatorEngineering.ModSystem
             //api.Logger.Notification("YYY: block.GetDrops on " + api.Side);
             var list = new List<ItemStack>();
             var scrapDropQty = 0;
-            list.Add(new ItemStack(this.api.World.GetItem(new AssetLocation("translocatorengineeringredux:coalescencecrystalshard")), this.api.World.Rand.Next(5, 6)));
+            if (this.AlwaysDropAllCrystalShards)
+            {
+                list.Add(new ItemStack(this.api.World.GetItem(new AssetLocation("translocatorengineeringredux:coalescencecrystalshard")), 6));
+            }
+            else
+            {
+                list.Add(new ItemStack(this.api.World.GetItem(new AssetLocation("translocatorengineeringredux:coalescencecrystalshard")), this.api.World.Rand.Next(5, 6)));
+            }
             var metalPartsQty = this.api.World.Rand.Next(2, 4);
             list.Add(new ItemStack(this.api.World.GetBlock(new AssetLocation("game:metal-parts")), metalPartsQty));
             scrapDropQty += 4 - metalPartsQty;

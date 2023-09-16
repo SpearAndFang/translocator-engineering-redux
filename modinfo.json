@@ -3,7 +3,7 @@
   "modid": "translocatorengineeringredux",
   "name": "Translocator Engineering Redux",
   "authors": [ "goxmeor" ],
-  "description": "Enables deconstruction, construction, and linking of Static Translocators (ft. CaptainOats, SpearAndFang, Macoto Hino)",
-  "version": "1.4.6",
+  "description": "Enables deconstruction, construction, and linking of Static Translocators (ft. CaptainOats, SpearAndFang, Macoto Hino, Peter Wedder, Billy Galbreath)",
+  "version": "1.4.7",
   "dependencies": {}
 }
