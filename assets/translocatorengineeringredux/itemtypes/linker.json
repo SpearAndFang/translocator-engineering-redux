@@ -12,8 +12,8 @@
   "maxstacksize": 1,
   "guiTransform": {
     "translation": {
-      "x": 8,
-      "y": 4,
+      "x": -1.4,
+      "y": 6,
       "z": 0
     },
     "rotation": {
@@ -22,11 +22,11 @@
       "z": 180
     },
     "origin": {
-      "x": 0.44,
+      "x": 0.54,
       "y": 0,
-      "z": 0.38
+      "z": 0.48
     },
-    "scale": 2.02
+    "scale": 1.86
   },
   "fpHandTransform": {
     "translation": {

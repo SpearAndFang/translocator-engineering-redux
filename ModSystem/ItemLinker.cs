@@ -1,14 +1,10 @@
 namespace TranslocatorEngineering.ModSystem
 {
     using System;
-    //using System.Collections.Generic;
-    //using System.IO;
-    //using System.Linq;
     using Vintagestory.API.Client;
     using Vintagestory.API.Common;
     using Vintagestory.API.Config;
     using Vintagestory.API.MathTools;
-    //using Vintagestory.API.Server;
     using Vintagestory.API.Util;
     using TranslocatorEngineering.ModConfig;
 
@@ -186,7 +182,7 @@ namespace TranslocatorEngineering.ModSystem
             // renderinfo.ModelRef = meshrefs[(int)((float)capi.World.ElapsedMilliseconds / 1000f) % 10];
         }
 
-        private MeshRef[] meshrefs;
+        private MultiTextureMeshRef[] meshrefs;
         public override void OnLoaded(ICoreAPI api)
         {
             if (api.Side == EnumAppSide.Client)
@@ -196,7 +192,7 @@ namespace TranslocatorEngineering.ModSystem
         }
         private void OnLoadedClientSide(ICoreClientAPI capi)
         {
-            this.meshrefs = new MeshRef[10];
+            this.meshrefs = new MultiTextureMeshRef[10];
             var key = this.Code.ToString() + "-meshes";
             var shape = capi.Assets.TryGet("translocatorengineeringredux:shapes/item/linker.json").ToObject<Shape>().Clone();
             this.meshrefs[0] = TesselateAndUpload(this, shape, capi);
@@ -223,10 +219,10 @@ namespace TranslocatorEngineering.ModSystem
             ShapeElementAdjustUpFaceGlowAndTexture(shape, "Light8", 255, "fire-red");
             this.meshrefs[9] = TesselateAndUpload(this, shape, capi);
         }
-        private static MeshRef TesselateAndUpload(CollectibleObject collectible, Shape shape, ICoreClientAPI capi)
+        private static MultiTextureMeshRef TesselateAndUpload(CollectibleObject collectible, Shape shape, ICoreClientAPI capi)
         {
             capi.Tesselator.TesselateShape(collectible, shape, out var meshData, new Vec3f(0, 0, 0));
-            return capi.Render.UploadMesh(meshData);
+            return capi.Render.UploadMultiTextureMesh(meshData);
         }
         private static void ShapeElementAdjustUpFaceGlowAndTexture(Shape shape, string name, int glow, string newTexture)
         {
