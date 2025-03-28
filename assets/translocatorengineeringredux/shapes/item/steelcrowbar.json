@@ -9,9 +9,9 @@
   },
   "textures": {
     "stainlesssteel2": "game:block/metal/ingot/stainlesssteel",
-    "cutdiamond": "game:item/tradegoods/cutdiamond",
+    "cutdiamond": "translocatorengineeringredux:item/cutdiamond",
     "tallow": "game:block/tallow",
-    "leather": "game:item/resource/leather"
+    "leather": "translocatorengineeringredux:item/leather"
   },
   "elements": [
     {

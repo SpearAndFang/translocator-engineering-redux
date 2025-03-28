@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "file": "TranslocatorEngineeringMod.json",
+  "settings": {
+    "float": {
+      "RECOVERYCHANCEGATEARRAY": {
+        "name": "RecoveryChanceGateArray",
+        "ingui": "",
+        "weight": 3,
+        "comment": "translocatorengineeringredux:RecoveryChanceGateArray-Comment",
+
+        "default": 0.8,
+        "range": {
+          "min": 0.0,
+          "max": 1.0
+        }
+      },
+      "RECOVERYCHANCEPARTICULATIONCOMPONENT": {
+        "name": "RecoveryChanceParticulationComponent",
+        "ingui": "",
+        "weight": 4,
+        "comment": "translocatorengineeringredux:RecoveryChanceParticulationComponent-Comment",
+
+        "default": 0.8,
+        "range": {
+          "min": 0.0,
+          "max": 1.0
+        }
+      }
+    },
+    "integer": {
+      "MAXIMUMLINKRANGE": {
+        "name": "MaximumLinkRange",
+        "ingui": "",
+        "weight": 1,
+        "comment": "translocatorengineeringredux:MaximumLinkRange-Comment",
+
+        "default": 8000,
+        "range": {
+          "min": 1000,
+          "max": 20000
+        }
+      }
+    },
+    "boolean": {
+      "ALWAYSDROPALLCRYSTALSHARDS": {
+        "name": "AlwaysDropAllCrystalShards",
+        "ingui": "",
+        "weight": 2,
+        "comment": "translocatorengineeringredux:AlwaysDropAllCrystalShards-Comment",
+        "default": false
+      }
+    }
+  },
+  "formatting": [
+    {
+      "type": "separator",
+      "text": "translocatorengineeringredux:MaximumLinkRange",
+      "weight": 0.5
+    },
+    {
+      "type": "separator",
+      "text": "translocatorengineeringredux:AlwaysDropAllCrystalShards",
+      "weight": 1.5
+    },
+    {
+      "type": "separator",
+      "text": "translocatorengineeringredux:RecoveryChanceGateArray",
+      "weight": 2.5
+    },
+    {
+      "type": "separator",
+      "text": "translocatorengineeringredux:RecoveryChanceParticulationComponent",
+      "weight": 3.5
+    }
+  ]
+}

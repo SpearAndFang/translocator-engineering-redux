@@ -82,6 +82,14 @@ namespace TranslocatorEngineering.ModSystem
             if (blockSel?.Position == null)
             { return; }
 
+            //respect claims
+            IPlayer byPlayer = (byEntity as EntityPlayer)?.Player;
+            if (!byEntity.World.Claims.TryAccess(byPlayer, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak))
+            {
+                return;
+            }
+
+
             var blockEntity = this.api.World.BlockAccessor.GetBlockEntity(blockSel.Position);
             if (!(blockEntity is ModifiedBlockEntityStaticTranslocator blockEntityTranslocator))
             { return; }

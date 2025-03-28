@@ -14,5 +14,14 @@
   "translocatorengineeringredux:ingameerror-linker-out-of-range": "¡Fuera de alcance!",
   "translocatorengineeringredux:ingameerror-linker-synced": "Sincronizado al Translocador",
   "translocatorengineeringredux:ingameerror-linker-linked": "Translocadores enlazados!",
-  "game:tabname-tengineering": "Ingeniería de Translocadores"
+  "game:tabname-tengineering": "Ingeniería de Translocadores",
+
+  "RecoveryChanceGateArray": "Gate Array Recovery Multiplier",
+  "RecoveryChanceGateArray-Comment": "Recovery chance multiplier for gate arrays.",
+  "RecoveryChanceParticulationComponent": "Particulation Component Recovery Multiplier",
+  "RecoveryChanceParticulationComponent-Comment": "Recovery chance multiplier for particulation components.",
+  "MaximumLinkRange": "Maximum Link Range",
+  "MaximumLinkRange-Comment": "Maximum linkable distance between two translocators.",
+  "AlwaysDropAllCrystalShards": "Always Drop All Crystal Shards",
+  "AlwaysDropAllCrystalShards-Comment": "Enable to always recover all crystal shards."
 }

@@ -1,0 +1,30 @@
+{
+  "translocatorengineeringredux:item-linker": "Spojovač translokátoru",
+  "translocatorengineeringredux:item-coalescencecrystalshard": "Koalescenční střep krystalu",
+  "translocatorengineeringredux:item-crowbar": "Páčidlo",
+  "translocatorengineeringredux:itemdesc-crowbar": "Podržte levé tlačítko na statickém translokátoru, abyste jej rozebrali.",
+  "translocatorengineeringredux:item-gatearray": "Hradlové pole",
+  "translocatorengineeringredux:item-particulationcomponent": "Částicový komponent",
+  "translocatorengineeringredux:item-powercore": "Energetické jádro",
+  "translocatorengineeringredux:item-rectifiedcoalescencecrystal": "Rektifikovaný koalescenční krystal",
+  "heldhelp-linker-sync": "Synchronizace",
+  "heldhelp-linker-clear": "Desynchronizace",
+  "heldhelp-linker-link": "Spojování",
+  "translocatorengineeringredux:ingameerror-linker-cleared": "Synchronizace vymazána",
+  "translocatorengineeringredux:ingameerror-linker-out-of-range": "Mimo dosah!",
+  "translocatorengineeringredux:ingameerror-linker-synced": "Synchronizováno s Translocatorem",
+  "translocatorengineeringredux:ingameerror-linker-linked": "Translokátor propojen!",
+  "game:tabname-tengineering": "Translocator",
+
+  "game:te-quickstart-title": "Translocator Engineering: Rychlý průvodce",
+  "game:te-quickstart-text": "<strong>Translocator Engineering: Rychlý průvodce</strong><br><i>rozbít je, vyrobit je, spojit je.</i><br><br>Aktualizované verze tohoto modu a další dokumentaci lze nalézt <a href=\"https://mods.vintagestory.at/translocatorengineeringredux\">zde</a>.<br><br><strong>Představení</strong><br>Tento mod umožňuje rozebrat vanila <a href=\"handbook://block-statictranslocator-normal-north\">statické translokátory</a>, znovu je postavit, přemístit a propojit. Můžete také znovu propojit stávající funkční translokátory.<br><br><strong>Spojovač translokátoru</strong><br> <a href=\"handbook://item-translocatorengineeringredux:linker\">Spojovač translokátoru</a> lze použít ke spojení dvou translokátorů. Vytvořené translokátory lze okamžitě propojit. Nalezené translokátory bude nutné opravit, než je bude možné propojit.<br><br>Nemá smysl stavět a umisťovat nově vytvořené translokátory bez spojovače, protože nikam nevedou. Pouze translokátory nalezené v zničených strukturách jsou předem propojeny s jinými translokátory.<br><br>Recept na vytvoření spojovače zahrnuje <a href=\"handbook://item-translocatorengineeringredux:gatearray\">Hradlové pole</a>  (mimo jiné - podívejte se do příručky), takže alespoň jeden translokátor musí být obětován, aby ho bylo možno vyrobit.<br><br>Chcete-li použít spojovač, klikněte pravým tlačítkem myši na translokátor a poté klikněte pravým tlačítkem na druhý translokátor. Oba translokátory se propojí. Pokud byl některý translokátor dříve propojen s jiným translokátorem, tento další translokátor se odpojí. Nepropojený translokátor je stále opraven, ale před použitím vyžaduje propojení. Veškerá translokace je obousměrná – neexistuje jednosměrný translokátor.<br><br>Maximální vzdálenost spojení, které lze vytvořit mezi dvěma translokátory pomocí spojovače, je 8000 bloků. Světla na přední straně spojovače poskytují hrubý indikátor vzdálenosti. Když se budete vzdalovat od prvního translokátoru, ke kterému jste synchronizovali spojovač, světla začnou zhasínat (jedno světlo zhasne na každých 1000 bloků). Pokud držíte spojovač synchronizovaný s translokátorem, který je dále než 8000 bloků, všechna světla zhasnou a panel začne blikat, což znamená, že jste mimo dosah.<br><br>Po synchronizaci spojovače s translokátorem, jej můžete resetovat podržením 'plížení' (shift) a kliknutím pravým tlačítkem.<br><br><strong>Páčidlo</strong><br><a href=\"handbook://item-translocatorengineeringredux:crowbar\">Páčidlo</a> může být ukováno na kovadlině pomocí jediného ocelového ingotu. Pouze ocel je dostatečně pevná, aby z ní bylo účinné páčidlo. S páčidlem v ruce podržte levé tlačítko myši a rozeberte statický translokátor.<br><br><strong>Ostatní</strong><br>Když rozeberete statický translokátor, dostanete z něj 5-6 kusů <a href=\"handbook://item-translocatorengineeringredux:coalescencecrystalshard\">koalescenčních střepů krystalu</a>, ale budete jich potřebovat 6, abyste vytvořili kompletní <a href=\"handbook://item-translocatorengineeringredux:rectifiedcoalescencecrystal\">rektifikovaný koalescenční krystal</a> pro váš nový translokátor.<br><br>",
+
+  "RecoveryChanceGateArray": "Násobitel obnovy hradlového pole",
+  "RecoveryChanceGateArray-Comment": "Násobitel sance na vyjmutí hradlového pole.",
+  "RecoveryChanceParticulationComponent": "Násobitel vyjmutí cásticových komponent",
+  "RecoveryChanceParticulationComponent-Comment": "Násobitel sance na vyjmutí cásticových komponent.",
+  "MaximumLinkRange": "Maximalni dosah spojeni",
+  "MaximumLinkRange-Comment": "Maximální propojitelná vzdálenost mezi dvema translokátory.",
+  "AlwaysDropAllCrystalShards": "Vzdy vypadnou vsechny strepy krystalu",
+  "AlwaysDropAllCrystalShards-Comment": "Povolte, abyste vzdy vyjmuli vsechny strepy krystalu."
+}

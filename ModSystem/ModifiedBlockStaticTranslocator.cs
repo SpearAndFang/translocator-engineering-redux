@@ -30,7 +30,37 @@ namespace TranslocatorEngineering.ModSystem
         public override void OnBlockBroken(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier = 1)
         {
             //api.Logger.Notification("YYY: block.OnBlockBroken on " + api.Side);
-            base.OnBlockBroken(world, pos, byPlayer, dropQuantityMultiplier);
+            //base.OnBlockBroken(world, pos, byPlayer, dropQuantityMultiplier);
+            if (world.Side == EnumAppSide.Server && (byPlayer == null || byPlayer.WorldData.CurrentGameMode != EnumGameMode.Creative))
+            {
+                ItemStack[] drops = GetDrops(world, pos, byPlayer, dropQuantityMultiplier);
+
+                if (drops != null)
+                {
+                    for (int i = 0; i < drops.Length; i++)
+                    {
+                        if (SplitDropStacks)
+                        {
+                            for (int k = 0; k < drops[i].StackSize; k++)
+                            {
+                                ItemStack stack = drops[i].Clone();
+                                stack.StackSize = 1;
+                                world.SpawnItemEntity(stack, pos, null);
+                            }
+                        }
+                        else
+                        {
+                            world.SpawnItemEntity(drops[i].Clone(), pos, null);
+                        }
+
+                    }
+                }
+
+                world.PlaySoundAt(Sounds?.GetBreakSound(byPlayer), pos, 0, byPlayer);
+            }
+
+            SpawnBlockBrokenParticles(pos);
+            world.BlockAccessor.SetBlock(0, pos);
         }
         public override ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier = 1)
         {

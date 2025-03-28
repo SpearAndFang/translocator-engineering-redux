@@ -1,0 +1,30 @@
+{
+  "translocatorengineeringredux:item-linker": "Connecteur de translocateur",
+  "translocatorengineeringredux:item-coalescencecrystalshard": "Éclat de cristal de coalescence",
+  "translocatorengineeringredux:item-crowbar": "Pied-de-biche",
+  "translocatorengineeringredux:itemdesc-crowbar": "Maintenez le clic gauche sur un translocateur statique pour le démonter.",
+  "translocatorengineeringredux:item-gatearray": "Matrice de portes",
+  "translocatorengineeringredux:item-particulationcomponent": "Composant de particulation",
+  "translocatorengineeringredux:item-powercore": "Noyau énergétique",
+  "translocatorengineeringredux:item-rectifiedcoalescencecrystal": "Cristal de coalescence rectifié",
+  "heldhelp-linker-sync": "Synchroniser",
+  "heldhelp-linker-clear": "Désynchroniser",
+  "heldhelp-linker-link": "Lier",
+  "translocatorengineeringredux:ingameerror-linker-cleared": "Synchronisation effacée",
+  "translocatorengineeringredux:ingameerror-linker-out-of-range": "Hors de portée !",
+  "translocatorengineeringredux:ingameerror-linker-synced": "Synchronisé avec le translocateur",
+  "translocatorengineeringredux:ingameerror-linker-linked": "Translocateurs liés !",
+  "game:tabname-tengineering": "Translocator",
+
+  "game:te-quickstart-title": "Translocator Engineering : Guide de démarrage rapide",
+  "game:te-quickstart-text": "<strong>Ingénierie des translocateurs : Guide de démarrage rapide</strong><br><i>démonter, assembler, lier.</i><br><br>Les versions mises à jour de ce mod et une documentation supplémentaire peuvent être trouvées <a href=\"https://mods.vintagestory.at/translocatorengineeringredux\">ici</a>.<br><br><strong>Introduction</strong><br>Ce mod vous permet de démonter des <a href=\"handbook://block-statictranslocator-normal-north\">translocateurs statiques</a>, de les reconstruire, de les déplacer et de les lier. Vous pouvez également relier des translocateurs existants fonctionnels.<br><br><strong>Connecteur de translocateur</strong><br>Le <a href=\"handbook://item-translocatorengineeringredux:linker\">connecteur de translocateur</a> peut être utilisé pour relier deux translocateurs. Les translocateurs créés peuvent être liés immédiatement. Les translocateurs trouvés devront être réparés avant de pouvoir être liés.<br><br>Il n'y a aucun intérêt à construire et placer de nouveaux translocateurs sans un connecteur, car ils ne mèneront nulle part. Seuls les translocateurs trouvés dans les structures en ruines sont pré-liés à d'autres translocateurs.<br><br>La recette de fabrication du connecteur inclut une <a href=\"handbook://item-translocatorengineeringredux:gatearray\">matrice de portes</a> (parmi d'autres éléments - consultez le manuel), donc au moins un translocateur doit être sacrifié pour le fabriquer.<br><br>Pour utiliser le connecteur, faites un clic droit sur un translocateur, puis un clic droit sur un second translocateur. Les deux translocateurs seront liés. Si l'un ou l'autre des translocateurs était auparavant lié à un autre translocateur, ces autres translocateurs deviendront dissociés. Un translocateur dissocié reste réparé, mais doit être lié avant de pouvoir être utilisé. Toute translocation est bidirectionnelle - il n'y a jamais de translocateurs unidirectionnels.<br><br>La distance maximale à laquelle un lien peut être établi entre deux translocateurs avec le connecteur est de 8000 blocs. Les lumières à l'avant du connecteur fournissent une indication approximative de la distance. À mesure que vous vous éloignez du premier translocateur auquel vous avez synchronisé le connecteur, les lumières commenceront à s'éteindre (1 lumière s'éteindra tous les 1000 blocs). Si vous tenez un connecteur synchronisé à un translocateur se trouvant à plus de 8000 blocs, toutes les lumières s'éteindront et le panneau scintillera, indiquant que vous êtes hors de portée.<br><br>Après avoir synchronisé votre connecteur à un translocateur, vous pouvez le réinitialiser en maintenant la touche de furtivité (maj) et en faisant un clic droit.<br><br><strong>Pied-de-biche</strong><br>Le <a href=\"handbook://item-translocatorengineeringredux:crowbar\">pied-de-biche</a> peut être forgé sur une enclume avec un seul lingot d'acier. Seul l'acier est suffisamment résistant pour fabriquer un pied-de-biche efficace. Avec le pied-de-biche en main, maintenez le clic gauche pour démonter un translocateur statique.<br><br><strong>Autre</strong><br>Vous récupérerez 5-6 <a href=\"handbook://item-translocatorengineeringredux:coalescencecrystalshard\">éclats de cristal de coalescence</a> en démontant un translocateur statique, mais vous aurez besoin de 6 pour fabriquer un <a href=\"handbook://item-translocatorengineeringredux:rectifiedcoalescencecrystal\">cristal de coalescence rectifié</a> complet pour votre nouveau translocateur.<br><br>",
+
+  "RecoveryChanceGateArray": "Multiplicateur de récupération de matrice de portes",
+  "RecoveryChanceGateArray-Comment": "Multiplicateur de chance de récupération pour les matrices de portes.",
+  "RecoveryChanceParticulationComponent": "Multiplicateur de récupération de composant de particulation",
+  "RecoveryChanceParticulationComponent-Comment": "Multiplicateur de chance de récupération pour les composants de particulation.",
+  "MaximumLinkRange": "Portée de liaison maximale",
+  "MaximumLinkRange-Comment": "Distance maximale pouvant être liée entre deux translocateurs.",
+  "AlwaysDropAllCrystalShards": "Toujours récupérer tous les éclats de cristal",
+  "AlwaysDropAllCrystalShards-Comment": "Activez pour toujours récupérer tous les éclats de cristal."
+}
