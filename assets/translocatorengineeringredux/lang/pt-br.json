@@ -1,0 +1,30 @@
+{
+  "translocatorengineeringredux:item-linker": "Vinculador de Translocador",
+  "translocatorengineeringredux:item-coalescencecrystalshard": "Fragmento de Cristal de Coalescência",
+  "translocatorengineeringredux:item-crowbar": "Pé de Cabra",
+  "translocatorengineeringredux:itemdesc-crowbar": "Segure o clique esquerdo em um Translocador Estático para desmontá-lo.",
+  "translocatorengineeringredux:item-gatearray": "Matriz de Portas",
+  "translocatorengineeringredux:item-particulationcomponent": "Componente de Particulação",
+  "translocatorengineeringredux:item-powercore": "Núcleo de Energia",
+  "translocatorengineeringredux:item-rectifiedcoalescencecrystal": "Cristal de Coalescência Retificado",
+  "heldhelp-linker-sync": "Sincronizar",
+  "heldhelp-linker-clear": "Dessicronizar",
+  "heldhelp-linker-link": "Vincular",
+  "translocatorengineeringredux:ingameerror-linker-cleared": "Sincronização limpa",
+  "translocatorengineeringredux:ingameerror-linker-out-of-range": "Fora de alcance!",
+  "translocatorengineeringredux:ingameerror-linker-synced": "Sincronizado com o Translocador",
+  "translocatorengineeringredux:ingameerror-linker-linked": "Translocadores Vinculados!",
+  "game:tabname-tengineering": "Engenharia de Translocadores",
+
+  "game:te-quickstart-title": "Engenharia de Translocadores: Guia Rápido",
+  "game:te-quickstart-text": "<strong>Engenharia de Translocadores: Guia Rápido</strong><br><i>desmonte, monte, conecte.</i><br><br>Versões atualizadas deste mod e documentação adicional podem ser encontradas <a href=\"https://mods.vintagestory.at/translocatorengineeringredux\">aqui</a>.<br><br><strong>Introdução</strong><br>Este mod permite desmontar <a href=\"handbook://block-statictranslocator-normal-north\">translocadores estáticos</a> do jogo base, reconstruí-los, realocá-los e vinculá-los. Você também pode revincular translocadores funcionais já existentes.<br><br><strong>Vinculador de Translocador</strong><br>O <a href=\"handbook://item-translocatorengineeringredux:linker\">vinculador de translocador</a> pode ser usado para conectar dois translocadores. Translocadores criados podem ser vinculados imediatamente. Translocadores encontrados precisarão ser reparados antes de serem vinculados.<br><br>Não faz sentido construir e posicionar translocadores recém-criados sem um vinculador, pois eles não levarão a lugar algum. Apenas os translocadores encontrados em ruínas já vêm pré-vinculados a outros translocadores.<br><br>A receita de criação do vinculador inclui uma <a href=\"handbook://item-translocatorengineeringredux:gatearray\">matriz de portas</a> (entre outros itens – consulte o manual), então pelo menos um translocador deve ser sacrificado para criá-lo.<br><br>Para usar o vinculador, clique com o botão direito em um translocador, depois clique com o botão direito em um segundo translocador. Ambos os translocadores serão vinculados. Se algum deles já estiver vinculado a outro translocador, esses outros serão desvinculados. Um translocador desvinculado ainda está reparado, mas precisa ser vinculado novamente antes de ser usado. Toda translocação é bidirecional – nunca há translocadores unilaterais.<br><br>A distância máxima para vincular dois translocadores com o vinculador é de 8000 blocos. As luzes na frente do vinculador indicam aproximadamente a distância. À medida que você se afasta do primeiro translocador ao qual sincronizou o vinculador, as luzes começam a se apagar (1 luz a cada 1000 blocos). Se você estiver segurando um vinculador sincronizado com um translocador a mais de 8000 blocos de distância, todas as luzes se apagarão e o painel piscará, indicando que está fora de alcance.<br><br>Após sincronizar o vinculador a um translocador, você pode resetá-lo segurando agachar (shift) e clicando com o botão direito.<br><br><strong>Pé de Cabra</strong><br>O <a href=\"handbook://item-translocatorengineeringredux:crowbar\">pé de cabra</a> pode ser forjado em uma bigorna usando um único lingote de aço. Apenas o aço é forte o suficiente para fazer um pé de cabra eficaz. Com ele em mãos, segure o clique esquerdo para desmontar um translocador estático.<br><br><strong>Outros</strong><br>Você irá recuperar de 5 a 6 <a href=\"handbook://item-translocatorengineeringredux:coalescencecrystalshard\">fragmentos de cristal de coalescência</a> ao desmontar um translocador estático, mas precisará de 6 para criar um <a href=\"handbook://item-translocatorengineeringredux:rectifiedcoalescencecrystal\">cristal de coalescência retificado</a> completo para seu novo translocador.<br><br>",
+
+  "RecoveryChanceGateArray": "Multiplicador de Recuperação da Matriz de Portas",
+  "RecoveryChanceGateArray-Comment": "Multiplicador da chance de recuperação das matrizes de portas.",
+  "RecoveryChanceParticulationComponent": "Multiplicador de Recuperação do Componente de Particulação",
+  "RecoveryChanceParticulationComponent-Comment": "Multiplicador da chance de recuperação dos componentes de particulação.",
+  "MaximumLinkRange": "Alcance Máximo de Vinculação",
+  "MaximumLinkRange-Comment": "Distância máxima que pode ser vinculada entre dois translocadores.",
+  "AlwaysDropAllCrystalShards": "Sempre Derrubar Todos os Fragmentos de Cristal",
+  "AlwaysDropAllCrystalShards-Comment": "Ative para sempre recuperar todos os fragmentos de cristal."
+}
