@@ -84,9 +84,20 @@ namespace TranslocatorEngineering.ModSystem
                 .RegisterMessageType<SyncClientPacket>()
                 .SetMessageHandler<SyncClientPacket>(packet =>
                 {
-                    this.Mod.Logger.Event($"Received maximum link range of {packet.MaximumLinkRange} from server");
+                    
                     ModConfig.Loaded.MaximumLinkRange = packet.MaximumLinkRange;
-                });
+                    this.Mod.Logger.Event($"Received MaximumLinkRange of {packet.MaximumLinkRange} from server");
+
+                    ModConfig.Loaded.AlwaysDropAllCrystalShards = packet.AlwaysDropAllCrystalShards;
+                    this.Mod.Logger.Event($"Received AlwaysDropAllCrystalShards of {packet.AlwaysDropAllCrystalShards} from server");
+
+                    ModConfig.Loaded.RecoveryChanceGateArray = packet.RecoveryChanceGateArray;
+                    this.Mod.Logger.Event($"Received RecoveryChanceGateArray of {packet.RecoveryChanceGateArray} from server");
+
+                    ModConfig.Loaded.RecoveryChanceParticulationComponent = packet.RecoveryChanceParticulationComponent;
+                    this.Mod.Logger.Event($"Received RecoveryChanceParticulationComponent of {packet.RecoveryChanceParticulationComponent} from server");
+
+    });
         }
         //End BillyGalbreath 1.4.7
 
@@ -126,7 +137,10 @@ namespace TranslocatorEngineering.ModSystem
             // send the connecting player the settings it needs to be synced
             this.serverChannel.SendPacket(new SyncClientPacket
             {
-                MaximumLinkRange = ModConfig.Loaded.MaximumLinkRange
+                MaximumLinkRange = ModConfig.Loaded.MaximumLinkRange,
+                AlwaysDropAllCrystalShards = ModConfig.Loaded.AlwaysDropAllCrystalShards,
+                RecoveryChanceGateArray = ModConfig.Loaded.RecoveryChanceGateArray,
+                RecoveryChanceParticulationComponent = ModConfig.Loaded.RecoveryChanceParticulationComponent
             }, player);
         }
 

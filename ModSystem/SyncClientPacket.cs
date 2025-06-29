@@ -7,6 +7,9 @@ namespace TranslocatorEngineering.ModSystem
     public class SyncClientPacket
     {
         public int MaximumLinkRange;
+        public bool AlwaysDropAllCrystalShards;
+        public double RecoveryChanceGateArray;
+        public double RecoveryChanceParticulationComponent;
     }
 }
 //End BillyGalbreath 1.4.7
