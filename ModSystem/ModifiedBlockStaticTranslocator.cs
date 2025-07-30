@@ -62,6 +62,8 @@ namespace TranslocatorEngineering.ModSystem
             SpawnBlockBrokenParticles(pos);
             world.BlockAccessor.SetBlock(0, pos);
         }
+
+
         public override ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, float dropQuantityMultiplier = 1)
         {
             //api.Logger.Notification("YYY: block.GetDrops on " + api.Side);

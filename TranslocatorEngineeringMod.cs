@@ -15,6 +15,7 @@ namespace TranslocatorEngineering.ModSystem
     using Vintagestory.API.MathTools;
     using Vintagestory.API.Util;
     using TranslocatorEngineering.ModConfig;
+    using System.Linq;
 
 
     public class TranslocatorEngineeringMod : ModSystem
@@ -110,11 +111,11 @@ namespace TranslocatorEngineering.ModSystem
                 if (data != null)
                 {
                     this.queuedTranslocatorDestinationAssignments = SerializerUtil.Deserialize<Dictionary<BlockPos, QueuedAssignment>>(data);
-                    // api.Logger.Notification("XXX: SaveGameLoaded: loaded queuedTranslocatorDestinationAssignments: " + queuedTranslocatorDestinationAssignments.Select(e => $"{e.Key}: {e.Value}").Join());
+                    //api.Logger.Notification("XXX: SaveGameLoaded: loaded queuedTranslocatorDestinationAssignments: " + queuedTranslocatorDestinationAssignments.Select(e => $"{e.Key}: {e.Value}").Join());
                 }
                 else
                 {
-                    // api.Logger.Notification("XXX: SaveGameLoaded: nothing to load for queuedTranslocatorDestinationAssignments");
+                    //api.Logger.Notification("XXX: SaveGameLoaded: nothing to load for queuedTranslocatorDestinationAssignments");
                 }
             };
             sapi.Event.GameWorldSave += () => sapi.WorldManager.SaveGame.StoreData("queuedTranslocatorDestinationAssignments", SerializerUtil.Serialize(this.queuedTranslocatorDestinationAssignments));
@@ -165,18 +166,18 @@ namespace TranslocatorEngineering.ModSystem
             if (chunk == null)
             {
                 this.queuedTranslocatorDestinationAssignments[srcPos] = new QueuedAssignment() { dstPos = dstPos, timestamp = timestamp };
-                // api.Logger.Notification($"XXX: SetDestinationOrQueue: queued: {dstPos} ({timestamp})");
+                //api.Logger.Notification($"XXX: SetDestinationOrQueue: queued: {dstPos} ({timestamp})");
             }
             else
             {
                 if (!(this.api.World.BlockAccessor.GetBlockEntity(srcPos) is ModifiedBlockEntityStaticTranslocator blockEntity))
                 {
-                    // api.Logger.Notification($"XXX: SetDestinationOrQueue: skip presumably destroyed: {dstPos} ({timestamp})");
+                    //api.Logger.Notification($"XXX: SetDestinationOrQueue: skip presumably destroyed: {dstPos} ({timestamp})");
                     return; // maybe it was destroyed in the meantime?
                 }
                 else
                 {
-                    // api.Logger.Notification($"XXX: SetDestinationOrQueue: found BE right away! calling SetDestination: {dstPos} ({timestamp})");
+                    //api.Logger.Notification($"XXX: SetDestinationOrQueue: found BE right away! calling SetDestination: {dstPos} ({timestamp})");
                     blockEntity.SetDestination(dstPos, timestamp);
                 }
             }

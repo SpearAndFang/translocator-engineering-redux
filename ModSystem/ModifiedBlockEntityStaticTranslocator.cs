@@ -1,13 +1,15 @@
 namespace TranslocatorEngineering.ModSystem
 {
+    using HarmonyLib;
     using System;
     using System.Collections.Generic;
+    //using System.Diagnostics;
     using System.Text;
-    using HarmonyLib;
     using Vintagestory.API.Common;
     using Vintagestory.API.Datastructures;
     using Vintagestory.API.MathTools;
     using Vintagestory.GameContent;
+
 
     [HarmonyPatch(typeof(BlockEntityStaticTranslocator))]
     [HarmonyPatch("DoRepair")]
@@ -18,6 +20,8 @@ namespace TranslocatorEngineering.ModSystem
             (__instance as ModifiedBlockEntityStaticTranslocator)?.OnDoRepair();
         }
     }
+
+
     public class ModifiedBlockEntityStaticTranslocator : BlockEntityStaticTranslocator
     {
         // easy access to base class's privates
@@ -28,7 +32,7 @@ namespace TranslocatorEngineering.ModSystem
 
         // extra properties
         private int gearsAdded = 0;
-        private bool wasPlaced = false;
+        public bool wasPlaced = false;
         private double lastDestinationAssignmentTimestamp = 0;
 
         public override void OnBlockBroken(IPlayer byPlayer = null)
@@ -73,7 +77,7 @@ namespace TranslocatorEngineering.ModSystem
                 var queuedAssignment = api.ModLoader.GetModSystem<TranslocatorEngineeringMod>().PullQueuedDestinationAssignment(this.Pos);
                 if (queuedAssignment != null)
                 {
-                    // api.Logger.Notification($"XXX: ModifiedBlockEntityStaticTranslocator.Initialize: queuedAssignment! {queuedAssignment.dstPos?.ToString()} ({queuedAssignment.timestamp})");
+                    //api.Logger.Notification($"XXX: ModifiedBlockEntityStaticTranslocator.Initialize: queuedAssignment! {queuedAssignment.dstPos?.ToString()} ({queuedAssignment.timestamp})");
                     this.SetDestination(queuedAssignment.dstPos, queuedAssignment.timestamp);
                 }
             }
@@ -83,18 +87,18 @@ namespace TranslocatorEngineering.ModSystem
           // if this assignment is old news, ignore it (consider player visits A, then B (linking A to B), then visits A's previous dst before returning to A)
             if (timestamp < this.lastDestinationAssignmentTimestamp)
             {
-                // Api.Logger.Notification($"XXX: ModifiedBlockEntityStaticTranslocator.SetDestination: old news! {timestamp} < {lastDestinationAssignmentTimestamp} for {dstPos?.ToString()}");
+                //Api.Logger.Notification($"XXX: ModifiedBlockEntityStaticTranslocator.SetDestination: old news! {timestamp} < {lastDestinationAssignmentTimestamp} for {dstPos?.ToString()}");
                 return;
             }
             this.lastDestinationAssignmentTimestamp = timestamp;
             // if this assignment is a link (not an unlink), and we are already linked, unlink the current destination
             if (dstPos != null && this.tpLocation != null)
             {
-                // Api.Logger.Notification($"XXX: ModifiedBlockEntityStaticTranslocator.SetDestination: linking already linked! unlink current destination {this.tpLocation?.ToString()} @ preversed timestamp {timestamp}");
+                //Api.Logger.Notification($"XXX: ModifiedBlockEntityStaticTranslocator.SetDestination: linking already linked! unlink current destination {this.tpLocation?.ToString()} @ preversed timestamp {timestamp}");
                 this.Api.ModLoader.GetModSystem<TranslocatorEngineeringMod>().SetDestinationOrQueue(this.tpLocation, null, timestamp); // same timestamp!
             }
             // n.b. Api is null?!?!?!?!?!?!?!?
-            // Api.Logger.Notification($"XXX: ModifiedBlockEntityStaticTranslocator.SetDestination: finishing up by setting tpLocation and CanTeleport: {this.tpLocation?.ToString()} => {dstPos?.ToString()}");
+            //Api.Logger.Notification($"XXX: ModifiedBlockEntityStaticTranslocator.SetDestination: finishing up by setting tpLocation and CanTeleport: {this.tpLocation?.ToString()} => {dstPos?.ToString()}");
             this.tpLocation = dstPos;
             this.CanTeleport = dstPos != null;
         }
@@ -109,7 +113,7 @@ namespace TranslocatorEngineering.ModSystem
             // ... this fixes the awkward situation in which you sync A, teleport from A to B, then link C right next to B, and C still appears linked until A is chunkloaded
             if (otherDstPos != null)
             {
-                // Api.Logger.Notification($"XXX: ModifiedBlockEntityStaticTranslocator.Link: fixup for otherDstPos @ {otherDstTimestamp}");
+                //Api.Logger.Notification($"XXX: ModifiedBlockEntityStaticTranslocator.Link: fixup for otherDstPos @ {otherDstTimestamp}");
                 this.Api.ModLoader.GetModSystem<TranslocatorEngineeringMod>().SetDestinationOrQueue(otherDstPos, null, otherDstTimestamp);
             }
         }
@@ -131,6 +135,15 @@ namespace TranslocatorEngineering.ModSystem
             }
             this.gearsAdded = tree.GetInt("gearsAdded", defaultGearsAdded);
             this.lastDestinationAssignmentTimestamp = tree.GetDouble("lastDestinationAssignmentTimestamp", 0);
+
+            //1.21 MAGIC BULLET?
+            if (this.wasPlaced)
+            {
+                findNextChunk = false;
+            }
+            //This potentially breaks the pre.2 update BUT with the wasPlaced check I think it will work!!!!
+
+
         }
         public override void ToTreeAttributes(ITreeAttribute tree)
         {
@@ -151,6 +164,7 @@ namespace TranslocatorEngineering.ModSystem
             this.gearsAdded = 2;
             this.setupGameTickers();
         }
+
         public override void GetBlockInfo(IPlayer forPlayer, StringBuilder dsc)
         {
             if (this.FullyRepaired && this.wasPlaced && !this.CanTeleport)
@@ -162,5 +176,86 @@ namespace TranslocatorEngineering.ModSystem
                 base.GetBlockInfo(forPlayer, dsc);
             }
         }
+
+        /*
+        public override void GetBlockInfo(IPlayer forPlayer, StringBuilder dsc)
+        {
+            //gox getblockinfo
+            if (this.FullyRepaired && this.wasPlaced && !this.CanTeleport)
+            {
+                dsc.AppendLine("Unlinked.");
+
+                dsc.AppendLine("canTele: " + CanTeleport);
+                dsc.AppendLine("repairState: " + repairState);
+                dsc.AppendLine("findNextChunk: " + findNextChunk);
+                dsc.AppendLine("activated: " + Activated);
+                dsc.AppendLine("tpLocationIsOffset: " + tpLocationIsOffset);
+
+                if (tpLocation != null)
+                {
+                    dsc.AppendLine("teleX: " + tpLocation.X);
+                    dsc.AppendLine("teleY: " + tpLocation.Y);
+                    dsc.AppendLine("teleZ: " + tpLocation.Z);
+                }
+
+                //gox totreeattributes
+                dsc.AppendLine("gearsAdded: " + this.gearsAdded);
+                dsc.AppendLine("wasPlaced: " + this.wasPlaced);
+                dsc.AppendLine("lastDestinationAssignmentTimestamp: " + this.lastDestinationAssignmentTimestamp);
+
+            }
+            //end gox getblockinfo
+            else
+            {
+            
+            //vanilla getblockinfo
+            if (!FullyRepaired)
+            {
+                dsc.AppendLine(Lang.Get("Seems to be missing a couple of gears. I think I've seen such gears before."));
+                return;
+            }
+            else
+            {
+                dsc.AppendLine("canTele: " + CanTeleport);
+                dsc.AppendLine("repairState: " + repairState);
+                dsc.AppendLine("findNextChunk: " + findNextChunk);
+                dsc.AppendLine("activated: " + Activated);
+                dsc.AppendLine("tpLocationIsOffset: " + tpLocationIsOffset);
+
+                if (tpLocation != null)
+                {
+                    dsc.AppendLine("teleX: " + tpLocation.X);
+                    dsc.AppendLine("teleY: " + tpLocation.Y);
+                    dsc.AppendLine("teleZ: " + tpLocation.Z);
+                }
+
+                //gox totreeattributes
+                dsc.AppendLine("gearsAdded: " + this.gearsAdded);
+                dsc.AppendLine("wasPlaced: " + this.wasPlaced);
+                dsc.AppendLine("lastDestinationAssignmentTimestamp: " + this.lastDestinationAssignmentTimestamp);
+                if (tpLocation == null)
+                {
+                    string[] lines = new string[] { Lang.Get("Warping spacetime."), Lang.Get("Warping spacetime.."), Lang.Get("Warping spacetime...") };
+
+                    dsc.AppendLine(lines[(int)(Api.World.ElapsedMilliseconds / 1000f) % 3]);
+                    return;
+                }
+            }
+
+            if (forPlayer.WorldData.CurrentGameMode == EnumGameMode.Creative)
+            {
+                BlockPos pos = Api.World.DefaultSpawnPosition.AsBlockPos;
+                var targetpos = tpLocation.Copy().Sub(pos.X, 0, pos.Z);
+                if (tpLocationIsOffset) targetpos.Add(Pos.X, pos.Y, pos.Z);
+                dsc.AppendLine(Lang.Get("Teleports to {0}", targetpos));
+            }
+            else
+            {
+                dsc.AppendLine(Lang.Get("Spacetime subduction completed."));
+            }
+            //end vanilla getblockinfo
+        }
+        */
     }
 }
+
