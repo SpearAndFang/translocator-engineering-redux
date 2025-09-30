@@ -1,13 +1,14 @@
 namespace TranslocatorEngineering.ModSystem
 {
     using System.Collections.Generic;
+    using TranslocatorEngineering.ModConfig;
     //using System.Diagnostics;
     using Vintagestory.API.Common;
+    using Vintagestory.API.Common.Entities;
     //using Vintagestory.API.Common.Entities;
     using Vintagestory.API.MathTools;
     //using Vintagestory.API.Util;
     using Vintagestory.GameContent;
-    using TranslocatorEngineering.ModConfig;
 
     public class ModifiedBlockStaticTranslocator : BlockStaticTranslocator
     {
@@ -19,7 +20,15 @@ namespace TranslocatorEngineering.ModSystem
         {
             if (itemslot.Itemstack?.Item?.Code.Path == "crowbar")
             {
-                return base.OnGettingBroken(player, blockSel, itemslot, remainingResistance, dt, counter);
+
+                if (api.World.Claims.TryAccess(player, blockSel.Position, EnumBlockAccessFlags.BuildOrBreak))
+                {
+                    return base.OnGettingBroken(player, blockSel, itemslot, remainingResistance, dt, counter);
+                }
+                else
+                {
+                    return 1f; //claimed - added in v1.6.1
+                }
             }
             else
             {
