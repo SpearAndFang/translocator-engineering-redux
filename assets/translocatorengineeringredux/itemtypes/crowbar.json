@@ -72,7 +72,7 @@
     "tools": [ "*" ],
     "tengineering": [ "*" ]
   },
-  "tool": "Shovel",
+  "tool": "Staff",
   "shape": {
     "base": "item/steelcrowbar"
   },
